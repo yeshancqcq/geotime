@@ -49,8 +49,14 @@ frame.pack(side = 'left', fill='both', expand=True, padx=10, pady=10)
 frame_res = LabelFrame(root, text = "Results", width = 685)
 frame_res.pack( fill='both', expand=True, padx=10, pady=10)
 
-frame_about = LabelFrame(root, text = "About", width = 685)
+frame_about = LabelFrame(root, text = "About", width = 685, bd = 0)
 frame_about.pack()
+
+frame_calc = LabelFrame(frame, text = "", bd = 0)
+frame_calc.grid(row = 14, column = 0)
+
+frame_pt = LabelFrame(frame, text = "", bd = 0)
+frame_pt.grid(row = 12, column = 0)
 
 # Starting texts ================
 
@@ -85,7 +91,7 @@ drop.grid(row = 3, column = 0)
 
 label3 = Label(frame, text = "   ").grid(row = 4, column = 0)
 
-# radio options for display ==================
+# options for display ==================
 
 detail_options = [
     "Standard",
@@ -213,7 +219,7 @@ def all_children (frame_res) :
     return _list
 
 
-showButton = Button(frame, text = "Show Period", command = get_period, fg = "blue", width = 15)
+showButton = Button(frame, text = "Show Interval", command = get_period, fg = "blue", width = 15)
 showButton.grid(row = 9, column = 0)
 
 label4 = Label(frame, text = "   ").grid(row = 10, column = 0)
@@ -228,16 +234,164 @@ def clearAbout():
     for item in widget_list:
         item.pack_forget()
 
-clearButton = Button(frame, text="Clear Results", command=clearScreen,  fg = "red", width = 15)
-clearButton.grid(row = 11, column = 0)
-
 fileMenu.add_command(label="Clear results", command = clearScreen)
 fileMenu.add_command(label="Clear about", command = clearAbout)
 editMenu.add_command(label="Data", command = aboutData)
 editMenu.add_command(label="Author", command = aboutAuthor)
 
 
-# result frame display ================
+# calculator ================
 
+res_label_clr = Label(frame, text="Calculator").grid(row = 13, column = 0)
+
+e2 = Entry(frame_calc, width = 20, bg = "gray80", fg = "black", borderwidth = 5)
+e2.grid(row = 0, column = 0, columnspan = 3, padx = 10, pady = 10)
+
+def button_click(num):
+    current = e2.get()
+    e2.delete(0, END)
+    e2.insert(0, str(current) + str(num))
+
+def button_add_func():
+    num1 = e2.get()
+    global f_num
+    global math
+    math = "+"
+    f_num = float(num1)
+    e2.delete(0,END)
+
+def button_minus_func():
+    num1 = e2.get()
+    global f_num
+    global math
+    math = "-"
+    f_num = float(num1)
+    e2.delete(0,END)
+
+def button_multi_func():
+    num1 = e2.get()
+    global f_num
+    global math
+    math = "x"
+    f_num = float(num1)
+    e2.delete(0,END)
+
+def button_div_func():
+    num1 = e2.get()
+    global f_num
+    global math
+    math = "/"
+    f_num = float(num1)
+    e2.delete(0,END)
+
+def button_equal_func():
+    num2 = e2.get()
+    e.delete(0,END)
+    if math == "+":
+        e2.insert(0, f_num + float(num2))
+    elif math == "-":
+        e2.insert(0, f_num - float(num2))
+    elif math == "x":
+        e2.insert(0, f_num * float(num2))
+    else:
+        e2.insert(0, f_num / float(num2))
+
+def button_clear_func():
+    e2.delete(0,END)
+    f_num = 0
+
+# define buttons
+
+button_1 = Button(frame_calc, text = "1",  width = 10, height = 3, command = lambda: button_click(1))
+button_2 = Button(frame_calc, text = "2",  width = 10, height = 3,  command = lambda: button_click(2))
+button_3 = Button(frame_calc, text = "3",  width = 10, height = 3,  command = lambda: button_click(3))
+button_4 = Button(frame_calc, text = "4",  width = 10, height = 3,  command = lambda: button_click(4))
+button_5 = Button(frame_calc, text = "5",  width = 10, height = 3,  command = lambda: button_click(5))
+button_6 = Button(frame_calc, text = "6",  width = 10, height = 3,  command = lambda: button_click(6))
+button_7 = Button(frame_calc, text = "7",  width = 10, height = 3,  command = lambda: button_click(7))
+button_8 = Button(frame_calc, text = "8",  width = 10, height = 3,  command = lambda: button_click(8))
+button_9 = Button(frame_calc, text = "9",  width = 10, height = 3,  command = lambda: button_click(9))
+button_0 = Button(frame_calc, text = "0",  width = 10, height = 3,  command = lambda: button_click(0))
+button_dot = Button(frame_calc, text = ".",width = 10, height = 3,  command = lambda: button_click("."))
+
+button_add =Button(frame_calc, text = "+",  width = 10, height = 3, command = button_add_func)
+button_minus =Button(frame_calc, text = "-",  width = 10, height = 3,  command = button_minus_func)
+button_multi =Button(frame_calc, text = "x",  width = 10, height = 3,  command = button_multi_func)
+button_div =Button(frame_calc, text = "÷",  width = 10, height = 3, command = button_div_func)
+button_equal =Button(frame_calc, text = "=",  width = 20, height = 3,  command = button_equal_func)
+button_clear =Button(frame_calc, text = "clear",  width = 10, height = 3, command = button_clear_func)
+
+# put buttons on the screen
+
+button_1.grid(row =3, column =0 )
+button_2.grid(row =3, column =1 )
+button_3.grid(row =3, column =2 )
+
+button_4.grid(row =2, column =0 )
+button_5.grid(row =2, column =1 )
+button_6.grid(row =2, column =2 )
+
+button_7.grid(row =1, column =0)
+button_8.grid(row =1, column =1)
+button_9.grid(row =1, column =2)
+
+button_0.grid(row =4, column =1)
+button_equal.grid(row =6, column =1, columnspan = 2)
+button_add.grid(row =4, column =2 )
+button_div.grid(row =5, column =0)
+button_multi.grid(row =5, column =1 )
+button_minus.grid(row =5, column =2 )
+button_clear.grid(row =6, column =0)
+button_dot.grid(row=4, column = 0)
+
+# end calculator ======
+
+# period to time=======
+
+res_label_pre = Label(frame_pt, text="Find by interval name").pack()
+
+e3 = Entry(frame_pt, width = 20, bg = "gray80", fg = "black", borderwidth = 5)
+e3.pack()
+
+def get_interval():
+    iv = e3.get()
+    with open('intervals.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        header = next(readCSV)
+        global interval
+        interval = {}
+        if header != None:
+            for row in readCSV:
+                if str(iv) == str(row[1]):
+                    interval['name'] = str(row[1])
+                    interval['abbrev'] = str(row[2])
+                    interval['t_age'] = str(row[3])
+                    interval['b_age'] = str(row[4])
+                    interval['type'] = str(row[5])
+                    interval['color'] = str(row[6])
+        if not interval:
+            res_label0 = Label(frame_res, text="  ").pack()
+            int_label1_text = "This is not an interval name."
+            res_label1 = Label(frame_res, text=int_label1_text).pack()
+        else:
+            int_label1_text = "Name: " + interval['name'] + " " + interval['abbrev']
+            int_label2_text = "Type: " + interval['type']
+            int_label3_text = "Duration: " + interval['b_age'] + " ~ " + interval['t_age']
+            int_label4_text = "Color: " + interval['color']
+            res_label0 = Label(frame_res, text="  ").pack()
+            res_label1 = Label(frame_res, text=int_label1_text).pack()
+            res_label2 = Label(frame_res, text=int_label2_text).pack()
+            res_label3 = Label(frame_res, text=int_label3_text).pack()
+            res_label4 = Label(frame_res, text=int_label4_text).pack()
+
+showInt= Button(frame_pt, text = "Find Interval", command = get_interval, fg = "blue", width = 15)
+showInt.pack()
+
+# clear=======
+
+res_label_clr = Label(frame, text="  ").grid(row = 15, column = 0)
+
+clearButton = Button(frame, text="Clear Results", command=clearScreen,  fg = "red", width = 15)
+clearButton.grid(row = 16, column = 0)
 
 root.mainloop()
