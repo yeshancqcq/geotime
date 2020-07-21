@@ -1,12 +1,13 @@
 from tkinter import *
+import tkinter.font as tkFont
 import csv
 
 root = Tk()
 root.title("GeoTime Look Up")
 root.geometry("1000x800")
 
-# data==============
-
+# style==============
+fontHeaders = tkFont.Font(family="Georgia", size=16)
 
 # menu==========================
 
@@ -53,23 +54,31 @@ frame_about = LabelFrame(root, text = "About", width = 685, bd = 0)
 frame_about.pack()
 
 frame_calc = LabelFrame(frame, text = "", bd = 0)
-frame_calc.grid(row = 14, column = 0)
+frame_calc.grid(row = 4, column = 0)
+
+label_space2 = Label(frame, text = "   ").grid(row = 3, column = 0)
 
 frame_pt = LabelFrame(frame, text = "", bd = 0)
-frame_pt.grid(row = 12, column = 0)
+frame_pt.grid(row = 2, column = 0)
+
+label_space1 = Label(frame, text = "   ").grid(row = 1, column = 0)
+
+frame_ma = LabelFrame(frame, text = "", bd = 0)
+frame_ma.grid(row = 0, column = 0)
 
 # Starting texts ================
+label0 = Label(frame_ma, text = "Search by Age", font = fontHeaders).grid(row = 0, column = 0)
 
-label1 = Label(frame, text = "Enter the Ma. (e.g. 1500 for 1500 Ma):").grid(row = 0, column = 0)
+label1 = Label(frame_ma, text = "Enter the Ma. (e.g. 1500 for 1500 Ma):").grid(row = 1, column = 0)
 
 # input box ===================
 
-e = Entry(frame, width = 20, bg = "gray80", fg = "black", borderwidth = 5)
-e.grid(row = 1, column = 0, columnspan = 2)
+e = Entry(frame_ma, width = 20, bg = "gray80", fg = "black", borderwidth = 5)
+e.grid(row = 2, column = 0)
 
 # get options ====================
 
-label1 = Label(frame, text = "Display options:").grid(row = 2, column = 0)
+label1 = Label(frame_ma, text = "Display options:").grid(row = 3, column = 0)
 
 # dropdown menu for periods =================
 options = [
@@ -86,10 +95,10 @@ def get_option_level():
 time_opt = StringVar()
 time_opt.set(options[0])
 
-drop = OptionMenu(frame, time_opt, *options)
-drop.grid(row = 3, column = 0)
+drop = OptionMenu(frame_ma, time_opt, *options)
+drop.grid(row = 4, column = 0)
 
-label3 = Label(frame, text = "   ").grid(row = 4, column = 0)
+
 
 # options for display ==================
 
@@ -105,12 +114,12 @@ def get_detail_level():
 detail_opt = StringVar()
 detail_opt.set(detail_options[0])
 
-detail_drop = OptionMenu(frame, detail_opt, *detail_options)
+detail_drop = OptionMenu(frame_ma, detail_opt, *detail_options)
 detail_drop.grid(row = 5, column = 0)
 
 # get results ==================
 
-label2 = Label(frame, text = "   ").grid(row = 6, column = 0)
+#label2 = Label(frame, text = "   ").grid(row = 6, column = 0)
 def get_period():
     yr = float(e.get())
     if yr < 0:
@@ -219,10 +228,10 @@ def all_children (frame_res) :
     return _list
 
 
-showButton = Button(frame, text = "Show Interval", command = get_period, fg = "blue", width = 15)
-showButton.grid(row = 9, column = 0)
+showButton = Button(frame_ma, text = "Show Interval", command = get_period, fg = "blue", width = 15)
+showButton.grid(row = 6, column = 0)
 
-label4 = Label(frame, text = "   ").grid(row = 10, column = 0)
+#label4 = Label(frame, text = "   ").grid(row = 10, column = 0)
 
 def clearScreen():
     widget_list = all_children(frame_res)
@@ -242,10 +251,10 @@ editMenu.add_command(label="Author", command = aboutAuthor)
 
 # calculator ================
 
-res_label_clr = Label(frame, text="Calculator").grid(row = 13, column = 0)
+res_label_clr = Label(frame_calc, text="Calculator", font = fontHeaders).grid(row = 0, column = 0, columnspan = 3)
 
 e2 = Entry(frame_calc, width = 20, bg = "gray80", fg = "black", borderwidth = 5)
-e2.grid(row = 0, column = 0, columnspan = 3, padx = 10, pady = 10)
+e2.grid(row = 1, column = 0, columnspan = 3)
 
 def button_click(num):
     current = e2.get()
@@ -302,56 +311,58 @@ def button_clear_func():
 
 # define buttons
 
-button_1 = Button(frame_calc, text = "1",  width = 10, height = 3, command = lambda: button_click(1))
-button_2 = Button(frame_calc, text = "2",  width = 10, height = 3,  command = lambda: button_click(2))
-button_3 = Button(frame_calc, text = "3",  width = 10, height = 3,  command = lambda: button_click(3))
-button_4 = Button(frame_calc, text = "4",  width = 10, height = 3,  command = lambda: button_click(4))
-button_5 = Button(frame_calc, text = "5",  width = 10, height = 3,  command = lambda: button_click(5))
-button_6 = Button(frame_calc, text = "6",  width = 10, height = 3,  command = lambda: button_click(6))
-button_7 = Button(frame_calc, text = "7",  width = 10, height = 3,  command = lambda: button_click(7))
-button_8 = Button(frame_calc, text = "8",  width = 10, height = 3,  command = lambda: button_click(8))
-button_9 = Button(frame_calc, text = "9",  width = 10, height = 3,  command = lambda: button_click(9))
-button_0 = Button(frame_calc, text = "0",  width = 10, height = 3,  command = lambda: button_click(0))
-button_dot = Button(frame_calc, text = ".",width = 10, height = 3,  command = lambda: button_click("."))
+button_1 = Button(frame_calc, text = "1",  width = 10, height = 2, command = lambda: button_click(1))
+button_2 = Button(frame_calc, text = "2",  width = 10, height = 2,  command = lambda: button_click(2))
+button_3 = Button(frame_calc, text = "3",  width = 10, height = 2,  command = lambda: button_click(3))
+button_4 = Button(frame_calc, text = "4",  width = 10, height = 2,  command = lambda: button_click(4))
+button_5 = Button(frame_calc, text = "5",  width = 10, height = 2,  command = lambda: button_click(5))
+button_6 = Button(frame_calc, text = "6",  width = 10, height = 2,  command = lambda: button_click(6))
+button_7 = Button(frame_calc, text = "7",  width = 10, height = 2,  command = lambda: button_click(7))
+button_8 = Button(frame_calc, text = "8",  width = 10, height = 2,  command = lambda: button_click(8))
+button_9 = Button(frame_calc, text = "9",  width = 10, height = 2,  command = lambda: button_click(9))
+button_0 = Button(frame_calc, text = "0",  width = 10, height = 2,  command = lambda: button_click(0))
+button_dot = Button(frame_calc, text = ".",width = 10, height = 2,  command = lambda: button_click("."))
 
-button_add =Button(frame_calc, text = "+",  width = 10, height = 3, command = button_add_func)
-button_minus =Button(frame_calc, text = "-",  width = 10, height = 3,  command = button_minus_func)
-button_multi =Button(frame_calc, text = "x",  width = 10, height = 3,  command = button_multi_func)
-button_div =Button(frame_calc, text = "÷",  width = 10, height = 3, command = button_div_func)
-button_equal =Button(frame_calc, text = "=",  width = 20, height = 3,  command = button_equal_func)
-button_clear =Button(frame_calc, text = "clear",  width = 10, height = 3, command = button_clear_func)
+button_add =Button(frame_calc, text = "+",  width = 10, height = 2, command = button_add_func)
+button_minus =Button(frame_calc, text = "-",  width = 10, height = 2,  command = button_minus_func)
+button_multi =Button(frame_calc, text = "x",  width = 10, height = 2,  command = button_multi_func)
+button_div =Button(frame_calc, text = "÷",  width = 10, height = 2, command = button_div_func)
+button_equal =Button(frame_calc, text = "=",  width = 20, height = 2,  command = button_equal_func)
+button_clear =Button(frame_calc, text = "clear",  width = 10, height = 2, command = button_clear_func)
 
 # put buttons on the screen
 
-button_1.grid(row =3, column =0 )
-button_2.grid(row =3, column =1 )
-button_3.grid(row =3, column =2 )
+button_1.grid(row =4, column =0 )
+button_2.grid(row =4, column =1 )
+button_3.grid(row =4, column =2 )
 
-button_4.grid(row =2, column =0 )
-button_5.grid(row =2, column =1 )
-button_6.grid(row =2, column =2 )
+button_4.grid(row =3, column =0 )
+button_5.grid(row =3, column =1 )
+button_6.grid(row =3, column =2 )
 
-button_7.grid(row =1, column =0)
-button_8.grid(row =1, column =1)
-button_9.grid(row =1, column =2)
+button_7.grid(row =2, column =0)
+button_8.grid(row =2, column =1)
+button_9.grid(row =2, column =2)
 
-button_0.grid(row =4, column =1)
-button_equal.grid(row =6, column =1, columnspan = 2)
-button_add.grid(row =4, column =2 )
-button_div.grid(row =5, column =0)
-button_multi.grid(row =5, column =1 )
-button_minus.grid(row =5, column =2 )
-button_clear.grid(row =6, column =0)
-button_dot.grid(row=4, column = 0)
+button_0.grid(row =5, column =1)
+button_equal.grid(row =7, column =1, columnspan = 2)
+button_add.grid(row =5, column =2 )
+button_div.grid(row =6, column =0)
+button_multi.grid(row =6, column =1 )
+button_minus.grid(row =6, column =2 )
+button_clear.grid(row =7, column =0)
+button_dot.grid(row=5, column = 0)
 
 # end calculator ======
 
 # period to time=======
 
-res_label_pre = Label(frame_pt, text="Find by interval name").pack()
+res_label_title = Label(frame_pt, text="Search by Name",font= fontHeaders).grid(row = 0, column = 0)
+
+res_label_pre = Label(frame_pt, text="Enter the interval name:").grid(row = 1, column = 0)
 
 e3 = Entry(frame_pt, width = 20, bg = "gray80", fg = "black", borderwidth = 5)
-e3.pack()
+e3.grid(row = 2, column = 0)
 
 def get_interval():
     iv = e3.get()
@@ -370,28 +381,30 @@ def get_interval():
                     interval['type'] = str(row[5])
                     interval['color'] = str(row[6])
         if not interval:
-            res_label0 = Label(frame_res, text="  ").pack()
             int_label1_text = "This is not an interval name."
             res_label1 = Label(frame_res, text=int_label1_text).pack()
+            res_label0 = Label(frame_res, text="  ").pack()
         else:
             int_label1_text = "Name: " + interval['name'] + " " + interval['abbrev']
             int_label2_text = "Type: " + interval['type']
             int_label3_text = "Duration: " + interval['b_age'] + " ~ " + interval['t_age']
             int_label4_text = "Color: " + interval['color']
-            res_label0 = Label(frame_res, text="  ").pack()
             res_label1 = Label(frame_res, text=int_label1_text).pack()
             res_label2 = Label(frame_res, text=int_label2_text).pack()
             res_label3 = Label(frame_res, text=int_label3_text).pack()
             res_label4 = Label(frame_res, text=int_label4_text).pack()
+            res_label0 = Label(frame_res, text="  ").pack()
 
 showInt= Button(frame_pt, text = "Find Interval", command = get_interval, fg = "blue", width = 15)
-showInt.pack()
+showInt.grid(row = 3, column = 0)
 
 # clear=======
 
-res_label_clr = Label(frame, text="  ").grid(row = 15, column = 0)
+res_label_clr = Label(frame, text="  ").grid(row = 3, column = 0)
+
+label_space3 = Label(frame, text = "   ").grid(row = 5, column = 0)
 
 clearButton = Button(frame, text="Clear Results", command=clearScreen,  fg = "red", width = 15)
-clearButton.grid(row = 16, column = 0)
+clearButton.grid(row = 6, column = 0)
 
 root.mainloop()
