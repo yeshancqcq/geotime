@@ -400,7 +400,7 @@ showInt.grid(row = 3, column = 0)
 
 # clear=======
 
-res_label_clr = Label(frame, text="  ").grid(row = 3, column = 0)
+#res_label_clr = Label(frame, text="  ").grid(row = 3, column = 0)
 
 label_space3 = Label(frame, text = "   ").grid(row = 5, column = 0)
 
