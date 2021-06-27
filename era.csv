@@ -1,0 +1,12 @@
+﻿time,min_age,max_age,color,abbr
+Cenozoic,0,66,#F2F91D,Ce
+Mesozoic,66,251.902,#67C5CA,Me
+Paleozoic,251.902,541,#99C08D,Pa
+Neoproterozoic,541,1000,#FF9BCD,NP
+Mesoproterozoic,1000,1600,#FF7EBF,MP
+Paleoproterozoic,1600,2500,#E665A6,PP
+Neoarchean,2500,2800,#FF5CAD,Nar
+Mesoarchean,2800,3200,#E62E8A,Mar
+Paleoarchean,3200,3600,#CC297A,Par
+Eoarchean,3600,4000,#B2246B,Ear
+Hadean,4000,4600,grey70,Ha

@@ -1,0 +1,49 @@
+﻿time,min_age,max_age,color,abbr
+Holocene,0,0.0117,#FEF2E0,H
+Pleistocene,0.0117,2.588,#FFF2AE,Ple
+Pliocene,2.588,5.333,#FFFF99,Pli
+Miocene,5.333,23.03,#FFFF00,Mi
+Oligocene,23.03,33.9,#FDC07A,Ol
+Eocene,33.9,56,#FDB46C,Eo
+Paleocene,56,66,#FDA75F,Pa
+Late Cretaceous,66,100.5,#A6D84A,LK
+Early Cretaceous,100.5,145,#8CCD57,EK
+Late Jurassic,145,163.5,#B3E3EE,LJ
+Middle Jurassic,163.5,174.1,#80CFD8,MJ
+Early Jurassic,174.1,201.3,#42AED0,EJ
+Late Triassic,201.3,237,#BD8CC3,LTr
+Middle Triassic,237,247.2,#B168B1,MTr
+Early Triassic,247.2,251.902,#983999,Etr
+Lopingian,251.902,259.1,#FBA794,Lop
+Guadalupian,259.1,272.95,#FB745C,Gu
+Cisuralian,272.95,298.9,#EF5845,Ci
+Pennsylvanian,298.9,323.2,#99C2B5,Pn
+Mississippian,323.2,358.9,#678F66,Ms
+Late Devonian,358.9,382.7,#F1E19D,LD
+Middle Devonian,382.7,393.3,#F1C868,MD
+Early Devonian,393.3,419.2,#E5AC4D,ED
+Ludlow,423,427.4,#BFE6CF,Lu
+Wenlock,427.4,433.4,#B3E1C2,We
+Llandovery,433.4,443.8,#99D7B3,Ll
+Late Ordovician,443.8,458.4,#7FCA93,LO
+Middle Ordovician,458.4,470,#4DB47E,MO
+Early Ordovician,470,485.4,#1A9D6F,EO
+Furongian,485.4,497,#B3E095,Fu
+Miaolingian,497,509,#A6CF86,Ml
+Series 2,509,521,#99C078,S2
+Terreneuvian,521,541,#8CB06C,Te
+Ediacaran,541,635,#FFC3E1,Ed
+Cryogenian,635,720,#FFAFD7,Cr
+Tonian,720,1000,#FFA5D2,To
+Stenian,1000,1200,#FFA5D2,Ste
+Ectasian,1200,1400,#FF98CC,Ec
+Calymmian,1400,1600,#FF8BC5,Ca
+Statherian,1600,1800,#EE93C1,Sta
+Orosirian,1800,2050,#E874AF,Or
+Rhyacian,2050,2300,#EB84B8,Rh
+Siderian,2300,2500,#E874AF,Si
+Neoarchean,2500,2800,#FF5CAD,Nar
+Mesoarchean,2800,3200,#E62E8A,Mar
+Paleoarchean,3200,3600,#CC297A,Par
+Eoarchean,3600,4000,#B2246B,Ear
+Hadean,4000,4600,gray,Ha

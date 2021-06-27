@@ -1,0 +1,5 @@
+﻿time,min_age,max_age,color,abbr
+Phanerozoic,0,541,#9AD9DD,Pha
+Proterozoic,541,2500,#FF70B8,Prot
+Archean,2500,4000,#FF3399,Arch
+Hadean,4000,4600,grey70,Ha
